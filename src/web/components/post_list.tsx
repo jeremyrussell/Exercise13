@@ -8,6 +8,14 @@ const SpicyMeme: React.StatelessComponent<PostsProperties> = (props) => {
 	return (
 		<div>
 			<div>{text.posts}</div>
+			{props.posts && props.posts.map((post) => {
+				return (
+					<div key={post.id}>
+						<div>{post.title}</div>
+						<div>{post.body}</div>
+					</div>
+				)
+			})}
 		</div>
 	)
 }

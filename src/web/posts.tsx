@@ -8,7 +8,7 @@ import { StoreState } from "../state/store"
 import Container from "../containers/posts_container"
 import Component from "./components/post_list"
 
-const store = createStore<StoreState>(posts, {spiceLevel: 1, posts: []})
+const store = createStore<StoreState>(posts)
 
 const Posts = Container(Component)
 
