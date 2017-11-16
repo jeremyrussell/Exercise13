@@ -3,7 +3,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/web/spicy_meme.tsx',
+//   entry: './src/web/spicy_meme.tsx',
+  entry: './src/web/posts.tsx',
   module: {
     rules: [
       {
