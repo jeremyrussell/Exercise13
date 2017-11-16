@@ -3,14 +3,17 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/web/hello_world.tsx',
+  entry: './src/web/spicy_meme.tsx',
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-      }
+        exclude: /node_modules/,
+		loader: 'ts-loader',
+		options: {
+			configFile: 'tsconfig.web.json'
+		}
+	}
     ]
   },
   plugins: [
@@ -24,7 +27,9 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
+	path: path.resolve(__dirname, "/artifacts/web"),
     filename: 'bundle.js'
   },
+  watch: true,
   devtool: "source-map"
 };
