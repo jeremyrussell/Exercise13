@@ -26,9 +26,12 @@ store.dispatch(fetchPosts())
 
 const Posts = Container(Component)
 
-ReactDOM.render(
-	<Provider store={store}>
-		<Posts />
-	</Provider>,
-	document.getElementById("root") as HTMLElement
-)
+const App: React.StatelessComponent = () => {
+	return (
+		<Provider store={store}>
+			<Posts />
+		</Provider>
+	)
+}
+
+export default App

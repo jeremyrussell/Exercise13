@@ -1,23 +1,22 @@
 import * as React from "react"
-import { PostsProperties } from "../../containers/posts_container"
-// import ImageView from "./spicy_meme_image_view"
-// import Stepper from "./spice_stepper_presentation"
+import { style } from "typestyle"
+
+import { PostsStateProperties } from "../../containers/posts_container"
+import Heading from "./post_list_heading"
+import Items from "./post_list_items"
 import { text } from "../../text"
 
-const SpicyMeme: React.StatelessComponent<PostsProperties> = (props) => {
+const heading = style({
+	textAlign: "center"
+})
+
+const PostsList: React.StatelessComponent<PostsStateProperties> = (props) => {
 	return (
 		<div>
-			<div>{text.posts}</div>
-			{props.posts && props.posts.map((post) => {
-				return (
-					<div key={post.id}>
-						<div>{post.title}</div>
-						<div>{post.body}</div>
-					</div>
-				)
-			})}
+			<Heading text={text.posts} />
+			<Items list={props.list || []} />
 		</div>
 	)
 }
 
-export default SpicyMeme
+export default PostsList

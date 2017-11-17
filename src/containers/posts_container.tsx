@@ -3,25 +3,15 @@ import { StoreState } from "../state/store"
 import { connect, Dispatch } from "react-redux"
 
 export interface PostsStateProperties {
-	posts?: actions.Post[]
+	fetching?: boolean
+	list?: actions.Post[]
 }
 
-export interface PostsDispatchProperties {
-	retrievePosts?: typeof actions.retrievePosts
-}
-
-export interface PostsProperties extends PostsStateProperties, PostsDispatchProperties {}
-
-export function mapStateToProps(props: StoreState) {
+export function mapStateToProps(state: StoreState): PostsStateProperties {
 	return {
-		posts: props.posts
+		fetching: state.posts.fetching,
+		list: state.posts.list
 	}
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.PostsAction>) {
-	return {
-		retrievePosts: () => dispatch(actions.retrievePosts())
-	}
-}
-
-export default connect<PostsStateProperties, PostsDispatchProperties>(mapStateToProps, mapDispatchToProps)
+export default connect<PostsStateProperties>(mapStateToProps)

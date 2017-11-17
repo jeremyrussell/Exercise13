@@ -13,9 +13,9 @@ export interface HelloWorldDispatchProperties {
 
 export interface HelloWorldProperties extends HelloWorldStateProperties, HelloWorldDispatchProperties {}
 
-export function mapStateToProps({ spiceLevel }: StoreState) {
+export function mapStateToProps(state: number): HelloWorldStateProperties {
 	return {
-		spiceLevel
+		spiceLevel: state
 	}
 }
 

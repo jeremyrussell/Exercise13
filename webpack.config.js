@@ -3,8 +3,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-//   entry: './src/web/spicy_meme.tsx',
-  entry: './src/web/posts.tsx',
+  entry: {
+	spice: './src/web/spicy_meme.tsx',
+	posts: './src/web/posts.tsx'
+  },
   module: {
     rules: [
       {
@@ -20,16 +22,23 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['artifacts']),
     new HtmlWebpackPlugin({
-      title: 'hello world',
-      template: 'src/web/index.html'
-    })
-  ],
+		title: 'hello world',
+		template: 'src/web/index.html',
+		chunks: ['spice']
+    }),
+    new HtmlWebpackPlugin({
+		title: 'posts',
+		filename: 'posts.html',
+		template: 'src/web/index.html',
+		chunks: ['posts']
+	})
+	],
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
 	path: path.resolve(__dirname, "/artifacts/web"),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   watch: true,
   devtool: "source-map"
